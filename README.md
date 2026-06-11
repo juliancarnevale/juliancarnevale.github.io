@@ -35,7 +35,7 @@ Experiencia en prácticas en startup tecnológica, proyectos reales de Data & BI
 - **ConextApp** · Startup de geolocalización — prácticas profesionales Mar–Jun 2026
 
 ### 📊 Data & BI
-- **[Dashboard Ventas Tech](https://github.com/juliancarnevale/dashboard_ventas_tech)** · Pipeline MySQL → Python → Pandas → Matplotlib/Seaborn
+- **[Dashboard Ventas Tech — Pipeline Completo de Datos](https://github.com/juliancarnevale/dashboard_ventas_tech)** · MySQL + MariaDB + Python + Pandas + Matplotlib + Power BI + DAX
 - **[Dashboard Superstore Power BI](https://github.com/juliancarnevale/dashboard-superstore-powerbi)** · 9.800 pedidos, 4 años de datos
 - **[Análisis Retención E-commerce](https://github.com/juliancarnevale/analisis-retencion-ecommerce-mysql)** · MySQL + Python + Pandas, pipeline empresarial
 - **[EDA Ventas Superstore](https://github.com/juliancarnevale/analisis-ventas-superstore)** · Análisis exploratorio + insights de negocio
