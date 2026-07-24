@@ -439,6 +439,11 @@ section { padding: 7rem 2.5rem; position: relative; z-index: 1; }
   border: 1px solid var(--border); margin-bottom: 1.1rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
+.project-shot-tall {
+  width: auto; max-width: 100%; height: 260px;
+  object-fit: cover; object-position: top;
+  margin-left: auto; margin-right: auto;
+}
 .project-tech { display: flex; flex-wrap: wrap; gap: 7px; }
 .tech-tag {
   font-family: var(--font-mono); font-size: 10.5px;
@@ -719,7 +724,7 @@ footer span { color: var(--accent); }
         <p>Finalicé el Grado Superior en <em>Desarrollo de Aplicaciones Multiplataforma (DAM)</em> con TFG propio en Java + Spring Boot, y completé mis prácticas profesionales en una startup de geolocalización, donde trabajé con Data, BI, monitorización de infraestructura y prototipado con IA.</p>
         <p>Desde entonces sumé formación específica en <strong>SQL avanzado</strong>, <strong>Power BI</strong> y desarrollo con agentes de IA. Mi diferencial es la combinación: analizo datos y construyo el software que los sostiene. No solo leo los números — entiendo el <em>producto</em> y el negocio detrás.</p>
         <div class="about-stats">
-          <div class="stat-card"><div class="stat-num">8+</div><div class="stat-label">Proyectos en GitHub</div></div>
+          <div class="stat-card"><div class="stat-num">7+</div><div class="stat-label">Proyectos en GitHub</div></div>
           <div class="stat-card"><div class="stat-num">DAM</div><div class="stat-label">Grado Superior Jun 2026</div></div>
           <div class="stat-card"><div class="stat-num">AWS</div><div class="stat-label">Cloud Practitioner en curso</div></div>
           <div class="stat-card"><div class="stat-num">EU</div><div class="stat-label">Doble nacionalidad IT+AR</div></div>
@@ -777,6 +782,7 @@ footer span { color: var(--accent); }
 
       <div class="project-card featured fade-in">
         <div>
+          <img class="project-shot" src="assets/img/dashboard-ventas-tech.webp" alt="Dashboard de ventas tech en Power BI">
           <span class="project-badge">🏆 Proyecto destacado — Pipeline End-to-End</span>
           <h3 class="project-title">Dashboard Ventas Tech — Pipeline Completo de Datos</h3>
           <p class="project-desc">Proyecto end-to-end que simula el flujo de trabajo real de un Data Analyst. Diseño de base de datos relacional en MySQL/MariaDB con 4 tablas relacionadas mediante claves foráneas (clientes, productos, categorías, pedidos). Extracción y análisis con Python y Pandas, visualizaciones con Matplotlib, y dashboard interactivo en Power BI con medidas DAX y segmentación dinámica.</p>
@@ -835,26 +841,6 @@ footer span { color: var(--accent); }
         </div>
       </div>
 
-      <div class="project-card featured fade-in">
-        <div>
-          <span class="project-badge">⭐ Pipeline empresarial · Retención de clientes</span>
-          <h3 class="project-title">Análisis de Retención E-commerce MySQL</h3>
-          <p class="project-desc">Simula un entorno empresarial real: extracción de datos transaccionales desde servidor de producción para analizar comportamiento, fidelidad y ticket medio de clientes. Pipeline completo con MySQL (FOREIGN KEY, modelado relacional), mysql-connector-python, fusión de dataframes con Pandas y visualización avanzada con Seaborn y Matplotlib.</p>
-          <div class="project-tech">
-            <span class="tech-tag">MySQL</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">Seaborn</span>
-            <span class="tech-tag">Matplotlib</span>
-            <span class="tech-tag">mysql-connector</span>
-            <span class="tech-tag">Jupyter Notebook</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/juliancarnevale/analisis-retencion-ecommerce-mysql" target="_blank" rel="noopener" class="link-btn">GitHub →</a>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -868,6 +854,7 @@ footer span { color: var(--accent); }
     <div class="projects-grid">
       <div class="project-card featured fade-in" style="border-color: rgba(245,158,11,0.5); background: linear-gradient(135deg, #181818 0%, rgba(245,158,11,0.06) 100%);">
         <div>
+          <img class="project-shot" src="assets/img/opinai-panel-analiticas.webp" alt="Panel de analíticas de OpinAI">
           <span class="project-badge" style="font-size:11px; padding: 4px 14px;">🏆 PROYECTO PRINCIPAL — SAAS FULL STACK · IA APLICADA</span>
           <h3 class="project-title" style="font-size:1.5rem; margin-top:4px;">OpinAI</h3>
           <p class="project-desc" style="font-size:14px; line-height:1.75; margin-bottom:1rem;">
@@ -910,6 +897,7 @@ footer span { color: var(--accent); }
 
       <div class="project-card featured fade-in">
         <div>
+          <img class="project-shot" src="assets/img/gestion-java-fullstack.webp" alt="Interfaz de la Aplicación de Gestión Java Full Stack">
           <span class="project-badge">⭐ Proyecto Principal — TFG 2026</span>
           <h3 class="project-title">Aplicación de Gestión Java Full Stack</h3>
           <p class="project-desc">Aplicación de escritorio completa desarrollada como Trabajo de Fin de Grado. Backend con Spring Boot, interfaz con JavaFX, persistencia con Hibernate y MySQL. Arquitectura en capas (Controller / Service / Repository) con manejo de excepciones, validaciones y CRUD completo.</p>
@@ -919,6 +907,7 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-card fade-in">
         <div>
+          <img class="project-shot" src="assets/img/legal-insight.webp" alt="Interfaz de Legal Insight">
           <span class="project-badge">Prototipo IA</span>
           <h3 class="project-title">Legal Insight</h3>
           <p class="project-desc">Herramienta de análisis legal prototipada con TypeScript y asistencia de IA. Demuestra capacidad de prototipado rápido, validación de producto y uso de LLMs para resolver problemas reales.</p>
@@ -928,6 +917,7 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-card fade-in">
         <div>
+          <img class="project-shot project-shot-tall" src="assets/img/conextapp.webp" alt="Interfaz móvil de ConextApp">
           <span class="project-badge">Prácticas Profesionales · Mar–Jun 2026</span>
           <h3 class="project-title">ConextApp — Startup Geolocalización</h3>
           <p class="project-desc">Plataforma de conexión social con geolocalización. QA, monitorización con Grafana + Prometheus + Loki, prototipado con Claude + Lovable, análisis de datos con Python y Power BI, y evaluación de LLMs en local con Ollama.</p>
