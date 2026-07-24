@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julián Nahuel Carnevale — Dev · Data · IA</title>
+<title>Julián Nahuel Carnevale — Data Analyst · Backend Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -115,6 +115,25 @@ nav.scrolled { padding: 0.85rem 2.5rem; }
 .nav-links a.active { color: var(--accent); }
 .nav-links a:hover::after,
 .nav-links a.active::after { transform: scaleX(1); }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px; height: 32px;
+  background: none; border: none; cursor: pointer;
+  padding: 0; z-index: 210;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--accent); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--accent); }
 
 /* ── HERO ── */
 #inicio {
@@ -415,6 +434,11 @@ section { padding: 7rem 2.5rem; position: relative; z-index: 1; }
   color: var(--muted); font-size: 14.5px;
   line-height: 1.85; margin-bottom: 1.25rem;
 }
+.project-shot {
+  width: 100%; display: block; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); margin-bottom: 1.1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
 .project-tech { display: flex; flex-wrap: wrap; gap: 7px; }
 .tech-tag {
   font-family: var(--font-mono); font-size: 10.5px;
@@ -571,8 +595,26 @@ footer span { color: var(--accent); }
   /* NAV — hamburger */
   nav { padding: 1rem 1.25rem; }
   .nav-logo { font-size: 13px; }
-  .nav-links { gap: 1rem; }
-  .nav-links a { font-size: 11px; letter-spacing: 0.01em; }
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0;
+    height: 100vh;
+    width: min(280px, 75vw);
+    background: rgba(10,10,10,0.98);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 2.5rem;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    z-index: 200;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-links a { font-size: 15px; letter-spacing: 0.01em; }
 
   /* HERO */
   section#inicio { padding: 7rem 1.25rem 3rem; }
@@ -621,15 +663,6 @@ footer span { color: var(--accent); }
   .nav-links { gap: 0.6rem; }
   .nav-links a { font-size: 10px; }
 }
-  .nav-links { gap: 1.5rem; }
-  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-photo-wrap { order: -1; width: fit-content; margin: 0 auto; }
-  .hero-photo { width: 160px; height: 160px; }
-  .about-grid { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .project-card { grid-template-columns: 1fr; }
-  .project-links { flex-direction: row; flex-wrap: wrap; }
-}
 </style>
 </head>
 <body>
@@ -645,8 +678,8 @@ footer span { color: var(--accent); }
   <ul class="nav-links" id="nav-menu">
     <li><a href="#sobre-mi" data-section="sobre-mi">Sobre mí</a></li>
     <li><a href="#skills" data-section="skills">Skills</a></li>
-    <li><a href="#proyectos" data-section="proyectos">Proyectos</a></li>
     <li><a href="#data-bi" data-section="data-bi">Data & BI</a></li>
+    <li><a href="#proyectos" data-section="proyectos">Proyectos</a></li>
     <li><a href="#contacto" data-section="contacto">Contacto</a></li>
   </ul>
 </nav>
@@ -655,10 +688,9 @@ footer span { color: var(--accent); }
   <div class="hero-grid-lines"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-tag"><span class="hero-tag-dot"></span>Disponible desde Junio 2026</div>
       <h1 class="hero-name">Julián<br><span>Carnevale</span></h1>
-      <p class="hero-title">Developer · <span class="typed-word" id="typed-dynamic">Java Backend</span></p>
-      <p class="hero-desc">Desarrollador con base sólida en Java y Spring Boot, mentalidad de producto y pasión por la inteligencia artificial aplicada. Construyo software que funciona — y entiendo el negocio detrás.</p>
+      <p class="hero-title">Data Analyst · <span class="typed-word" id="typed-dynamic">Backend Developer</span></p>
+      <p class="hero-desc">Transformo datos en decisiones con SQL y Power BI, y construyo el software que los sostiene con Java y Spring Boot. Entiendo el dato y entiendo el negocio detrás — y adopto herramientas de IA antes que la mayoría.</p>
       <div class="hero-ctas">
         <a href="#proyectos" class="btn-primary">Ver proyectos →</a>
         <a href="#contacto" class="btn-outline">Contactar</a>
@@ -684,10 +716,10 @@ footer span { color: var(--accent); }
     <div class="about-grid">
       <div class="about-text fade-in">
         <p>Tengo 32 años, nací en Buenos Aires y llevo varios años viviendo en Málaga. Con experiencia previa en entornos operativos de alta exigencia —incluyendo el <strong>Parque Tecnológico de Andalucía</strong>— di el salto definitivo a la tecnología y no miré atrás.</p>
-        <p>Estoy finalizando el Grado Superior en <em>Desarrollo de Aplicaciones Multiplataforma (DAM)</em> con TFG propio en Java + Spring Boot, y actualmente en prácticas en una startup donde trabajo con Data, BI, monitorización de infraestructura y prototipado con IA.</p>
-        <p>Mi diferencial es la <strong>combinación</strong>: sé programar, entiendo los datos y adopto herramientas de IA antes que la mayoría. No solo escribo código — pienso en <em>producto</em>.</p>
+        <p>Finalicé el Grado Superior en <em>Desarrollo de Aplicaciones Multiplataforma (DAM)</em> con TFG propio en Java + Spring Boot, y completé mis prácticas profesionales en una startup de geolocalización, donde trabajé con Data, BI, monitorización de infraestructura y prototipado con IA.</p>
+        <p>Desde entonces sumé formación específica en <strong>SQL avanzado</strong>, <strong>Power BI</strong> y desarrollo con agentes de IA. Mi diferencial es la combinación: analizo datos y construyo el software que los sostiene. No solo leo los números — entiendo el <em>producto</em> y el negocio detrás.</p>
         <div class="about-stats">
-          <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Proyectos en GitHub</div></div>
+          <div class="stat-card"><div class="stat-num">8+</div><div class="stat-label">Proyectos en GitHub</div></div>
           <div class="stat-card"><div class="stat-num">DAM</div><div class="stat-label">Grado Superior Jun 2026</div></div>
           <div class="stat-card"><div class="stat-num">AWS</div><div class="stat-label">Cloud Practitioner en curso</div></div>
           <div class="stat-card"><div class="stat-num">EU</div><div class="stat-label">Doble nacionalidad IT+AR</div></div>
@@ -708,6 +740,12 @@ footer span { color: var(--accent); }
           <div class="info-row"><span class="info-icon">🇮🇹</span><div><strong>Italiano</strong><span>Nivel B2 independiente</span></div></div>
           <div class="info-row"><span class="info-icon">🇬🇧</span><div><strong>Inglés</strong><span>Nivel A2 — mejora activa</span></div></div>
         </div>
+        <div class="about-info-card">
+          <h4>Formación complementaria</h4>
+          <div class="info-row"><span class="info-icon">📈</span><div><strong>Power BI: Análisis de Datos Profesional</strong><span>Santiago Hernández Ramos · Udemy</span></div></div>
+          <div class="info-row"><span class="info-icon">🗄️</span><div><strong>SQL y bases de datos desde 0</strong><span>Santiago Hernández Ramos · Udemy</span></div></div>
+          <div class="info-row"><span class="info-icon">🤖</span><div><strong>Desarrollo con IA: Programa con agentes</strong><span>MoureDev & BigSchool</span></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -719,9 +757,9 @@ footer span { color: var(--accent); }
     <h2 class="section-title">Stack <span>técnico</span></h2>
     <div class="section-line"></div>
     <div class="skills-grid">
-      <div class="skill-cat fade-in"><span class="skill-cat-icon">☕</span><div class="skill-cat-name">Backend — Java</div><div class="skill-tags"><span class="skill-tag main">Java 17</span><span class="skill-tag main">Spring Boot</span><span class="skill-tag main">Hibernate / JPA</span><span class="skill-tag">REST APIs</span><span class="skill-tag">OpenAPI</span><span class="skill-tag">Maven</span><span class="skill-tag">JavaFX</span></div></div>
-      <div class="skill-cat fade-in"><span class="skill-cat-icon">🗄️</span><div class="skill-cat-name">Base de Datos</div><div class="skill-tags"><span class="skill-tag main">MySQL</span><span class="skill-tag main">SQL avanzado</span><span class="skill-tag">Modelado relacional</span><span class="skill-tag">PostgreSQL (básico)</span></div></div>
       <div class="skill-cat fade-in"><span class="skill-cat-icon">📊</span><div class="skill-cat-name">Data & BI</div><div class="skill-tags"><span class="skill-tag main">Power BI</span><span class="skill-tag main">Python</span><span class="skill-tag main">MicroStrategy</span><span class="skill-tag">Jupyter Notebook</span><span class="skill-tag">Pandas</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span></div></div>
+      <div class="skill-cat fade-in"><span class="skill-cat-icon">🗄️</span><div class="skill-cat-name">Base de Datos</div><div class="skill-tags"><span class="skill-tag main">MySQL</span><span class="skill-tag main">SQL avanzado</span><span class="skill-tag">Modelado relacional</span><span class="skill-tag">PostgreSQL (básico)</span></div></div>
+      <div class="skill-cat fade-in"><span class="skill-cat-icon">☕</span><div class="skill-cat-name">Backend — Java</div><div class="skill-tags"><span class="skill-tag main">Java 17</span><span class="skill-tag main">Spring Boot</span><span class="skill-tag main">Hibernate / JPA</span><span class="skill-tag">REST APIs</span><span class="skill-tag">OpenAPI</span><span class="skill-tag">Maven</span><span class="skill-tag">JavaFX</span></div></div>
       <div class="skill-cat fade-in"><span class="skill-cat-icon">🤖</span><div class="skill-cat-name">IA Aplicada & Prototipado</div><div class="skill-tags"><span class="skill-tag main">Claude AI</span><span class="skill-tag main">Lovable</span><span class="skill-tag">Ollama (LLMs local)</span><span class="skill-tag">Gemma 2B</span><span class="skill-tag">Bolt</span><span class="skill-tag">n8n</span><span class="skill-tag">Prototipado MVP</span></div></div>
       <div class="skill-cat fade-in"><span class="skill-cat-icon">⚙️</span><div class="skill-cat-name">DevOps & Herramientas</div><div class="skill-tags"><span class="skill-tag main">Git / GitHub</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">Grafana</span><span class="skill-tag">Prometheus</span><span class="skill-tag">Loki</span><span class="skill-tag">AWS base</span><span class="skill-tag">CI/CD</span></div></div>
       <div class="skill-cat fade-in"><span class="skill-cat-icon">📱</span><div class="skill-cat-name">Mobile & Otros</div><div class="skill-tags"><span class="skill-tag">Android Studio</span><span class="skill-tag">Shorebird OTA</span><span class="skill-tag">IntelliJ IDEA</span><span class="skill-tag">VS Code</span><span class="skill-tag">Fumadocs</span><span class="skill-tag">Plane.so</span></div></div>
@@ -729,9 +767,102 @@ footer span { color: var(--accent); }
   </div>
 </section>
 
+<section id="data-bi" style="background: var(--bg);">
+  <div class="section-inner">
+    <p class="section-label">03 / Data & BI</p>
+    <h2 class="section-title">Análisis de <span>datos real</span></h2>
+    <div class="section-line"></div>
+    <p class="data-intro">Proyectos de análisis de datos construidos con pipelines completos: desde bases de datos relacionales hasta visualizaciones de negocio accionables. Stack: MySQL · Python · Pandas · Matplotlib · Seaborn · Power BI.</p>
+    <div class="projects-grid" style="margin-top:2.5rem;">
+
+      <div class="project-card featured fade-in">
+        <div>
+          <span class="project-badge">🏆 Proyecto destacado — Pipeline End-to-End</span>
+          <h3 class="project-title">Dashboard Ventas Tech — Pipeline Completo de Datos</h3>
+          <p class="project-desc">Proyecto end-to-end que simula el flujo de trabajo real de un Data Analyst. Diseño de base de datos relacional en MySQL/MariaDB con 4 tablas relacionadas mediante claves foráneas (clientes, productos, categorías, pedidos). Extracción y análisis con Python y Pandas, visualizaciones con Matplotlib, y dashboard interactivo en Power BI con medidas DAX y segmentación dinámica.</p>
+          <div class="project-tech">
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">MariaDB</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Matplotlib</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">DAX</span>
+            <span class="tech-tag">Power Query</span>
+            <span class="tech-tag">Jupyter Notebook</span>
+            <span class="tech-tag">DBeaver</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/juliancarnevale/dashboard_ventas_tech" target="_blank" rel="noopener" class="link-btn">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <div>
+          <img class="project-shot" src="assets/img/dashboard-prediccion-resultados.webp" alt="Dashboard de predicción de resultados deportivos en Power BI">
+          <span class="project-badge">Power BI · Machine Learning</span>
+          <h3 class="project-title">Predicción de Resultados Deportivos — Power BI + ML</h3>
+          <p class="project-desc">Dashboard de predicción de resultados de fútbol basado en cuotas de apuestas y modelos de Machine Learning. Compara resultado real vs. predicción, con métricas por equipo (victorias, goles, forma local/visitante) y segmentación dinámica por liga, temporada y equipo.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">DAX</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Modelado predictivo</span>
+            <span class="tech-tag">Segmentación de datos</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7485296534696329217/" target="_blank" rel="noopener" class="link-btn">LinkedIn →</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div>
+          <img class="project-shot" src="assets/img/dashboard-global-store.webp" alt="Dashboard de análisis de ventas Global Store en Power BI">
+          <span class="project-badge">Power BI · Business Intelligence</span>
+          <h3 class="project-title">Análisis de Ventas — Global Store (Power BI)</h3>
+          <p class="project-desc">Dashboard ejecutivo de análisis de ventas sobre el dataset Global Store: beneficio y facturación por año, margen de beneficio por segmento de cliente, ranking de Top 100 clientes por ventas y frecuencia de compra. Filtros dinámicos por fecha y visualizaciones listas para presentar a stakeholders.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">DAX</span>
+            <span class="tech-tag">Modelado de datos</span>
+            <span class="tech-tag">Business Intelligence</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7482836210797912064/" target="_blank" rel="noopener" class="link-btn">LinkedIn →</a>
+        </div>
+      </div>
+
+      <div class="project-card featured fade-in">
+        <div>
+          <span class="project-badge">⭐ Pipeline empresarial · Retención de clientes</span>
+          <h3 class="project-title">Análisis de Retención E-commerce MySQL</h3>
+          <p class="project-desc">Simula un entorno empresarial real: extracción de datos transaccionales desde servidor de producción para analizar comportamiento, fidelidad y ticket medio de clientes. Pipeline completo con MySQL (FOREIGN KEY, modelado relacional), mysql-connector-python, fusión de dataframes con Pandas y visualización avanzada con Seaborn y Matplotlib.</p>
+          <div class="project-tech">
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Seaborn</span>
+            <span class="tech-tag">Matplotlib</span>
+            <span class="tech-tag">mysql-connector</span>
+            <span class="tech-tag">Jupyter Notebook</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/juliancarnevale/analisis-retencion-ecommerce-mysql" target="_blank" rel="noopener" class="link-btn">GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <section id="proyectos">
   <div class="section-inner">
-    <p class="section-label">03 / Proyectos</p>
+    <p class="section-label">04 / Proyectos</p>
     <h2 class="section-title">Lo que he <span>construido</span></h2>
     <div class="section-line"></div>
     <div class="projects-grid">
@@ -788,15 +919,6 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-card fade-in">
         <div>
-          <span class="project-badge">Proyecto Académico</span>
-          <h3 class="project-title">AdoptaMe App</h3>
-          <p class="project-desc">Aplicación de adopción de mascotas desarrollada íntegramente en Java. CRUD completo, interfaz gráfica y lógica de negocio. Segunda versión migrada a TypeScript.</p>
-          <div class="project-tech"><span class="tech-tag">Java</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Git</span></div>
-        </div>
-        <div class="project-links"><a href="https://github.com/juliancarnevale/Adoptame-App-Final" target="_blank" rel="noopener" class="link-btn">GitHub →</a></div>
-      </div>
-      <div class="project-card fade-in">
-        <div>
           <span class="project-badge">Prototipo IA</span>
           <h3 class="project-title">Legal Insight</h3>
           <p class="project-desc">Herramienta de análisis legal prototipada con TypeScript y asistencia de IA. Demuestra capacidad de prototipado rápido, validación de producto y uso de LLMs para resolver problemas reales.</p>
@@ -817,98 +939,6 @@ footer span { color: var(--accent); }
   </div>
 </section>
 
-
-<section id="data-bi" style="background: var(--bg);">
-  <div class="section-inner">
-    <p class="section-label">04 / Data & BI</p>
-    <h2 class="section-title">Análisis de <span>datos real</span></h2>
-    <div class="section-line"></div>
-    <p class="data-intro">Proyectos de análisis de datos construidos con pipelines completos: desde bases de datos relacionales hasta visualizaciones de negocio accionables. Stack: MySQL · Python · Pandas · Matplotlib · Seaborn · Power BI.</p>
-    <div class="projects-grid" style="margin-top:2.5rem;">
-
-      <div class="project-card featured fade-in">
-        <div>
-          <span class="project-badge">🏆 Proyecto destacado — Pipeline End-to-End</span>
-          <h3 class="project-title">Dashboard Ventas Tech — Pipeline Completo de Datos</h3>
-          <p class="project-desc">Proyecto end-to-end que simula el flujo de trabajo real de un Data Analyst. Diseño de base de datos relacional en MySQL/MariaDB con 4 tablas relacionadas mediante claves foráneas (clientes, productos, categorías, pedidos). Extracción y análisis con Python y Pandas, visualizaciones con Matplotlib, y dashboard interactivo en Power BI con medidas DAX y segmentación dinámica.</p>
-          <div class="project-tech">
-            <span class="tech-tag">MySQL</span>
-            <span class="tech-tag">MariaDB</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">Matplotlib</span>
-            <span class="tech-tag">Power BI</span>
-            <span class="tech-tag">DAX</span>
-            <span class="tech-tag">Power Query</span>
-            <span class="tech-tag">Jupyter Notebook</span>
-            <span class="tech-tag">DBeaver</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/juliancarnevale/dashboard_ventas_tech" target="_blank" rel="noopener" class="link-btn">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div>
-          <span class="project-badge">Power BI · Business Intelligence</span>
-          <h3 class="project-title">Dashboard Superstore — Power BI</h3>
-          <p class="project-desc">Dashboard interactivo de análisis de ventas construido con Power BI Desktop sobre el dataset Superstore: 9.800 pedidos y 4 años de datos históricos. Modelado de datos, KPIs de negocio, filtros dinámicos y visualizaciones ejecutivas listas para presentar a stakeholders.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Power BI</span>
-            <span class="tech-tag">DAX</span>
-            <span class="tech-tag">Modelado de datos</span>
-            <span class="tech-tag">Business Intelligence</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/juliancarnevale/dashboard-superstore-powerbi" target="_blank" rel="noopener" class="link-btn">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="project-card featured fade-in">
-        <div>
-          <span class="project-badge">⭐ Pipeline empresarial · Retención de clientes</span>
-          <h3 class="project-title">Análisis de Retención E-commerce MySQL</h3>
-          <p class="project-desc">Simula un entorno empresarial real: extracción de datos transaccionales desde servidor de producción para analizar comportamiento, fidelidad y ticket medio de clientes. Pipeline completo con MySQL (FOREIGN KEY, modelado relacional), mysql-connector-python, fusión de dataframes con Pandas y visualización avanzada con Seaborn y Matplotlib.</p>
-          <div class="project-tech">
-            <span class="tech-tag">MySQL</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">Seaborn</span>
-            <span class="tech-tag">Matplotlib</span>
-            <span class="tech-tag">mysql-connector</span>
-            <span class="tech-tag">Jupyter Notebook</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/juliancarnevale/analisis-retencion-ecommerce-mysql" target="_blank" rel="noopener" class="link-btn">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div>
-          <span class="project-badge">EDA · Insights de negocio</span>
-          <h3 class="project-title">EDA Ventas Superstore — Kaggle</h3>
-          <p class="project-desc">Análisis exploratorio de datos completo sobre dataset de ventas (Kaggle). Objetivo: transformar datos brutos en insights accionables para la toma de decisiones. Limpieza y manipulación con Pandas, visualizaciones geográficas y temporales con Matplotlib, y estilizado profesional con Seaborn.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Python 3</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">Matplotlib</span>
-            <span class="tech-tag">Seaborn</span>
-            <span class="tech-tag">Jupyter Notebook</span>
-            <span class="tech-tag">EDA</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/juliancarnevale/analisis-ventas-superstore" target="_blank" rel="noopener" class="link-btn">GitHub →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <section id="contacto">
   <div class="section-inner">
     <p class="section-label">05 / Contacto</p>
@@ -916,7 +946,7 @@ footer span { color: var(--accent); }
     <div class="section-line"></div>
     <div class="contact-grid">
       <div class="contact-text fade-in">
-        <p>Estoy disponible para incorporarme a partir de junio de 2026. Si buscas un perfil junior con base técnica sólida, mentalidad de producto y capacidad de aprendizaje real — me interesa escucharte.</p>
+        <p>Estoy disponible para incorporarme de forma inmediata. Si buscas un perfil con base técnica sólida, mentalidad de producto y capacidad de aprendizaje real — me interesa escucharte.</p>
         <p>También abierto a proyectos freelance, colaboraciones o simplemente conectar.</p>
         <div class="contact-links">
           <a href="mailto:julian.carnevale3@gmail.com" class="contact-link"><div class="contact-link-icon">📧</div><div class="contact-link-info"><strong>Email</strong><span>julian.carnevale3@gmail.com</span></div><span class="contact-link-arrow">→</span></a>
@@ -1014,7 +1044,7 @@ new IntersectionObserver((entries) => {
 );
 
 // TYPING ANIMATION
-const words = ['Java Backend', 'Data & BI', 'IA Aplicada', 'Spring Boot', 'Full Stack'];
+const words = ['Backend Developer', 'Power BI & SQL', 'IA Aplicada', 'Java & Spring Boot', 'Data & BI'];
 let wi = 0, ci = 0, del = false;
 const typedEl = document.getElementById('typed-dynamic');
 function type() {
